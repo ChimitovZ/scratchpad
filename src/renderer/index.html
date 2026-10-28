@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'"
+    />
+    <title>Черновик</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <button type="button" data-act="clear" data-icon="trash-2" title="Очистить (Ctrl+Shift+Delete)"></button>
+        <button type="button" data-act="save" data-icon="save" title="Сохранить как… (Ctrl+S)"></button>
+        <button type="button" data-act="open" data-icon="folder-open" title="Открыть файл (Ctrl+O)"></button>
+        <button type="button" data-act="copy" data-icon="copy" title="Копировать всё (Ctrl+Shift+C)"></button>
+        <button type="button" data-act="paste" data-icon="clipboard-paste" title="Вставить и заменить (Ctrl+Shift+V)"></button>
+        <button type="button" data-act="wrap" data-icon="wrap-text" title="Перенос строк"></button>
+        <button type="button" data-act="settings" data-icon="settings" title="Настройки"></button>
+      </div>
+      <div class="drag"></div>
+      <button type="button" data-act="hide" data-icon="minus" title="Скрыть"></button>
+    </header>
+    <textarea id="editor" spellcheck="false" autocomplete="off"></textarea>
+    <footer>
+      <span id="stats">0 символов · 0 слов · 1 строка</span>
+      <span id="msg"></span>
+      <button type="button" id="undo" hidden>Отменить очистку</button>
+    </footer>
+    <aside id="panel" hidden>
+      <label>Размер шрифта
+        <input id="fontSize" type="number" min="11" max="22" step="1" />
+      </label>
+      <label class="check"><input id="wrap" type="checkbox" /> Перенос строк</label>
+      <label class="check"><input id="confirmClear" type="checkbox" /> Подтверждать очистку</label>
+      <label class="check"><input id="hideOnBlur" type="checkbox" /> Скрывать при потере фокуса</label>
+      <label>Хоткей
+        <input id="hotkey" type="text" readonly title="Кликните и нажмите сочетание" />
+      </label>
+    </aside>
+    <div id="confirm" hidden>
+      <span>Очистить черновик?</span>
+      <button type="button" id="yes">Очистить</button>
+      <button type="button" id="no">Отмена</button>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>

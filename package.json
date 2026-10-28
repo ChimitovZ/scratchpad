@@ -1,0 +1,54 @@
+{
+  "name": "scratchpad",
+  "version": "1.0.0",
+  "description": "Быстрый черновик в системном трее",
+  "main": "src/main.js",
+  "author": "Scratchpad",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "icons": "node scripts/icons.js",
+    "dist": "electron-builder --win"
+  },
+  "build": {
+    "appId": "ru.scratchpad.app",
+    "productName": "Scratchpad",
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "assets/app.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Черновик"
+    },
+    "portable": {
+      "artifactName": "Scratchpad-portable.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0",
+    "lucide-static": "^1.63.0",
+    "png-to-ico": "^3.0.2",
+    "sharp": "^0.35.5"
+  }
+}
